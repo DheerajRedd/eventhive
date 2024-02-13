@@ -28,7 +28,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Checkbox } from "../ui/checkbox";
 import { useRouter } from "next/navigation";
 import { createEvent, updateEvent } from "@/lib/actions/event.actions";
-import { IEvent } from "@/lib/database/models/event.model";
+import { IEvent } from "@/mongodb/database/models/event.model";
 
 type EventFormProps = {
   userId: string;
@@ -49,7 +49,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
       : eventDefaultValues;
   const router = useRouter();
 
-  // const { startUpload } = useUploadThing("imageUploader");
+  const { startUpload } = useUploadThing("imageUploader");
 
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
@@ -67,6 +67,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
       }
 
       uploadedImageUrl = uploadedImages[0].url;
+      console.log("Updated uploadedImageUrl:", uploadedImageUrl);
     }
 
     if (type === "Create") {
@@ -235,7 +236,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       onChange={(date: Date) => field.onChange(date)}
                       showTimeSelect
                       timeInputLabel="Time:"
-                      dateFormat="MM/DD/YYYY H:MM aa"
+                      dateFormat="MM/dd/yyyy h:mm aa"
                       wrapperClassName="datePicker"
                     />
                   </div>
