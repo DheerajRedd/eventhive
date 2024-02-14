@@ -23,7 +23,7 @@ import {
   createCategory,
   getAllCategories,
 } from "@/lib/actions/category.actions";
-import { ICategory } from "@/mongodb/database/models/category.model";
+import { ICategory } from "@/lib/database/models/category.model";
 
 type DropdownProps = {
   value?: string;

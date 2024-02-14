@@ -9,11 +9,11 @@ import {
 } from "@/types";
 import { redirect } from "next/navigation";
 import { handleError } from "../utils";
-import { connectToDatabase } from "@/mongodb/database";
-import Order from "@/mongodb/database/models/order.model";
-import Event from "@/mongodb/database/models/event.model";
+import { connectToDatabase } from "@/lib/database";
+import Order from "@/lib/database/models/order.model";
+import Event from "@/lib/database/models/event.model";
 import { ObjectId } from "mongodb";
-import User from "@/mongodb/database/models/user.model";
+import User from "@/lib/database/models/user.model";
 
 export const checkoutOrder = async (order: CheckoutOrderParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);

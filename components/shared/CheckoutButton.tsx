@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import Checkout from "./Checkout";
-import { IEvent } from "@/mongodb/database/models/event.model";
+import { IEvent } from "@/lib/database/models/event.model";
 
 const CheckoutButton = ({ event }: { event: IEvent }) => {
   const { user } = useUser();
